@@ -126,6 +126,13 @@ class Custom:
                 for chain_nft in value.nfts:
                     print(f'\t{chain_nft}')
 
+    @staticmethod
+    def current_balance_list(address: str) -> None:
+        for key, value in custom.current_balance_list(address=address, proxies=proxies).items():
+            print(f'\n-------------------------------- {key} --------------------------------')
+            for chain_token in value.tokens:
+                print(f'{chain_token}\n')
+
 
 if __name__ == '__main__':
     touch('proxies.txt', True)
@@ -162,3 +169,4 @@ if __name__ == '__main__':
     print('\n--------- Custom ---------')
     Custom().get_balance(address=checking_address, chain=ChainNames.ARBITRUM)
     Custom().get_balance(address=checking_address)
+    Custom().current_balance_list(address=checking_address)

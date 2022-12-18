@@ -30,7 +30,7 @@ def balance_list(address: str, chain: ChainNames or str, raw_data: bool = False,
 def cache_balance_list(address: str, raw_data: bool = False,
                        proxies: Optional[str or List[str]] = None) -> Dict[str, Chain] or Dict[str, dict]:
     """
-    Get token balances of an address of all chains.
+    Get cached token balances of an address of all chains (current at the time of the last balance_list queries).
 
     :param str address: the address
     :param bool raw_data: if True, it will return the unprocessed dictionary (False)
