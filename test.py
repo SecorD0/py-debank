@@ -134,39 +134,50 @@ class Custom:
                 print(f'{chain_token}\n')
 
 
+def main() -> None:
+    print('\n--------- Asset ---------')
+    asset_cls = Asset()
+    asset_cls.net_curve_24h(address=checking_address)
+
+    print('\n--------- History ---------')
+    history_cls = History()
+    history_cls.list_(address=checking_address)
+    history_cls.token_price(token_id='0xB8c77482e45F1F44dE1745F52C74426C631bDD52', chain=ChainNames.ETHEREUM)
+
+    print('\n--------- NFT ---------')
+    nft_cls = NFT()
+    nft_cls.collection_list(address=checking_address, chain=ChainNames.ARBITRUM)
+    nft_cls.collection_list(address=checking_address)
+    nft_cls.history_collection_list(address=checking_address, chain='arb')
+    nft_cls.history_collection_list(address=checking_address)
+    nft_cls.history_list(address=checking_address, chain=ChainNames.ARBITRUM)
+    nft_cls.used_chains(address=checking_address)
+
+    print('\n--------- Portfolio ---------')
+    portfolio_cls = Portfolio()
+    portfolio_cls.project_list(address=checking_address)
+
+    print('\n--------- Token ---------')
+    token_cls = Token()
+    token_cls.balance_list(address=checking_address, chain='arb')
+    token_cls.cache_balance_list(address=checking_address)
+
+    print('\n--------- User ---------')
+    user_cls = User()
+    user_cls.addr(address=checking_address)
+    user_cls.info(address=checking_address)
+    user_cls.total_balance(address=checking_address)
+
+    print('\n--------- Custom ---------')
+    custom_cls = Custom()
+    custom_cls.get_balance(address=checking_address, chain=ChainNames.ARBITRUM)
+    custom_cls.get_balance(address=checking_address)
+    custom_cls.current_balance_list(address=checking_address)
+
+
 if __name__ == '__main__':
     touch('proxies.txt', True)
     proxies = read_lines('proxies.txt', True)
     checking_address = '0x15B328F211B7a9387CA4da4a6DB4990eAF37b1b4'  # It's a random address from the explorer
 
-    print('\n--------- Asset ---------')
-    Asset().net_curve_24h(address=checking_address)
-
-    print('\n--------- History ---------')
-    History().list_(address=checking_address)
-    History().token_price(token_id='0xB8c77482e45F1F44dE1745F52C74426C631bDD52', chain=ChainNames.ETHEREUM)
-
-    print('\n--------- NFT ---------')
-    NFT().collection_list(address=checking_address, chain=ChainNames.ARBITRUM)
-    NFT().collection_list(address=checking_address)
-    NFT().history_collection_list(address=checking_address, chain='arb')
-    NFT().history_collection_list(address=checking_address)
-    NFT().history_list(address=checking_address, chain=ChainNames.ARBITRUM)
-    NFT().used_chains(address=checking_address)
-
-    print('\n--------- Portfolio ---------')
-    Portfolio().project_list(address=checking_address)
-
-    print('\n--------- Token ---------')
-    Token().balance_list(address=checking_address, chain='arb')
-    Token().cache_balance_list(address=checking_address)
-
-    print('\n--------- User ---------')
-    User().addr(address=checking_address)
-    User().info(address=checking_address)
-    User().total_balance(address=checking_address)
-
-    print('\n--------- Custom ---------')
-    Custom().get_balance(address=checking_address, chain=ChainNames.ARBITRUM)
-    Custom().get_balance(address=checking_address)
-    Custom().current_balance_list(address=checking_address)
+    main()
