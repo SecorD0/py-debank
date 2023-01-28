@@ -6,8 +6,37 @@
 
 <h1><p align="center">Content</p></h1>
 
+- [Short description](#Short-description)
+- [Useful links](#Useful-links)
+- [Installation](#Installation)
 - [Report a bug or suggest an idea](#Report-a-bug-or-suggest-an-idea)
 - [Express your gratitude](#Express-your-gratitude)
+
+
+
+<h1><p align="center">Short description</p></h1>
+<p align="right"><a href="#Content">To the content</a></p>
+
+⠀This library allows you to interact with the DeBank API.
+
+
+
+<h1><p align="center">Useful links</p></h1>
+<p align="right"><a href="#Content">To the content</a></p>
+
+⠀[py-debank-async](https://github.com/SecorD0/py-debank-async)
+
+⠀[py-debank](https://github.com/SecorD0/py-debank)
+
+
+
+<h1><p align="center">Installation</p></h1>
+<p align="right"><a href="#Content">To the content</a></p>
+
+⠀You need execute the command below to install or update the library:
+```sh
+pip install --force-reinstall git+https://github.com/SecorD0/py-debank
+```
 
 
 
