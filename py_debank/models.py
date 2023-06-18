@@ -93,7 +93,13 @@ class PortfolioItem(AutoRepr):
         self.proxy_detail: dict = data.get('proxy_detail')
         self.update_at: float = data.get('update_at')
 
-        self.parse_tokens(data.get('detail')['supply_token_list'])
+        details = data.get('details')
+        if details:
+            if 'supply_token_list' in details:
+                self.parse_tokens(details['supply_token_list'])
+
+            elif 'token' in details:
+                self.parse_tokens([details['token']])
 
     def parse_tokens(self, tokens: list) -> None:
         if not tokens:
