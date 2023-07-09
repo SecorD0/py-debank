@@ -1,5 +1,5 @@
 import random
-from typing import Optional, List
+from typing import Optional, List, Dict
 
 import requests
 from fake_useragent import UserAgent
@@ -7,11 +7,13 @@ from fake_useragent import UserAgent
 from py_debank import exceptions
 
 
-def get_headers() -> dict:
+def get_headers() -> Dict[str, str]:
     """
     Get headers for a request.
 
-    :return dict: headers
+    Returns:
+        dict: headers.
+
     """
     return {
         'accept': '*/*',
@@ -27,8 +29,13 @@ def get_proxy_dict(proxies: Optional[str or List[str]] = None) -> Optional[dict]
     """
     Construct a proxy dictionary for use in the 'requests' library.
 
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return Optional[dict]: the proxy dictionary with the selected proxy
+    Args:
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        Optional[dict]: the proxy dictionary with the selected proxy.
+
     """
     if not proxies:
         return
@@ -52,8 +59,12 @@ def check_response(response: requests.Response) -> dict:
     """
     Check if a request was sent successfully.
 
-    :param requests.Response response: the response instance
-    :return dict: the json-encoded content of a response
+    Args:
+        response (requests.Response): the response instance.
+
+    Returns:
+        dict: the json-encoded content of a response.
+
     """
     status_code = response.status_code
     if status_code != requests.codes.ok:

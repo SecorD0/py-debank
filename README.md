@@ -1,6 +1,6 @@
 <h1><p align="center">py-debank</p></h1>
 
-<p align="center"><img src="images/icons/app.png" width="400"></p>
+<p align="center"><img src="images/icons/library_icon.png" width="400"></p>
 
 
 

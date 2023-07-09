@@ -12,14 +12,21 @@ def project_list(
     """
     Get projects where the account's assets are located (liquidity, staking, etc.)
 
-    :param str address: the address
-    :param bool raw_data: if True, it will return the unprocessed dictionary (False)
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return Dict[str, Chain] or Dict[str, dict]: projects where the account's assets are located
-    {
-        'eth': Chain(..., projects=...),
-        'bsc': Chain(..., projects=...)
-    }
+    Args:
+        address (str): an address.
+        raw_data (bool): if True, it will return the unprocessed dictionary. (False)
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        Dict[str, Chain] or Dict[str, dict]: projects where the account's assets are located.
+        ::
+
+            {
+                'eth': Chain(..., projects=...),
+                'bsc': Chain(..., projects=...)
+            }
+
     """
     params = {
         'user_addr': address

@@ -13,15 +13,21 @@ def get_balance(
 ) -> Dict[str, Chain]:
     """
     Get the following information of an address of one or all chains:
+
     - token balances
     - projects where the account's assets are located
     - owned NFTs
 
-    :param str address: the address
-    :param ChainNames or str chain: the chain (all chains)
-    :param bool parse_nfts: whether to parse NFT, it leads to a high probability of "429 Too Many Requests" error (True)
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return Chain: the address information
+    Args:
+        address (str): an address.
+        chain (ChainNames or str): a chain. (all chains)
+        parse_nfts (bool): whether to parse NFT, it leads to a high probability of "429 Too Many Requests" error. (True)
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        Chain: the address information.
+
     """
     chains: Dict[str, Chain] = {}
     if chain:
@@ -68,14 +74,21 @@ def current_balance_list(
     """
     Get current token balances of an address of all chains.
 
-    :param str address: the address
-    :param bool raw_data: if True, it will return the unprocessed dictionary (False)
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return Dict[str, Chain] or Dict[str, dict]: token balances
-    {
-        'eth': Chain(..., tokens=...),
-        'bsc': Chain(..., tokens=...)
-    }
+    Args:
+        address (str): an address.
+        raw_data: if True, it will return the unprocessed dictionary. (False)
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        Dict[str, Chain] or Dict[str, dict]: token balances.
+        ::
+
+            {
+                'eth': Chain(..., tokens=...),
+                'bsc': Chain(..., tokens=...)
+            }
+
     """
     chain_dict = {}
     used_chains = addr(address=address, proxies=proxies).used_chains

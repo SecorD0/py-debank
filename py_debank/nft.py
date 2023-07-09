@@ -13,15 +13,22 @@ def collection_list(
     """
     Get owned collections (raw data) or NFTs by an address.
 
-    :param str address: the address
-    :param ChainNames or str chain: a chain (all chains)
-    :param bool raw_data: if True, it will return the unprocessed dictionary (False)
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return Dict[str, Chain] or Dict[str, dict]: owned collections (raw data) or NFTs
-    {
-        'eth': Chain(..., nfts=...),
-        'bsc': Chain(..., nfts=...)
-    }
+    Args:
+        address (str): an address.
+        chain (ChainNames or str): a chain. (all chains)
+        raw_data (bool): if True, it will return the unprocessed dictionary. (False)
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        Dict[str, Chain] or Dict[str, dict]: owned collections (raw data) or NFTs.
+        ::
+
+            {
+                'eth': Chain(..., nfts=...),
+                'bsc': Chain(..., nfts=...)
+            }
+
     """
     chain_dict = {}
     if chain:
@@ -78,14 +85,21 @@ def history_collection_list(
     """
     Get a profit leaderboard for all the NFT collections the address has ever owned.
 
-    :param str address: the address
-    :param ChainNames or str chain: a chain (all chains)
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return Dict[str, List[ProfitLeaderboard]]: the profit leaderboard
-    {
-        'eth': ProfitLeaderboard(...),
-        'bsc': ProfitLeaderboard(...)
-    }
+    Args:
+        address (str): an address.
+        chain (ChainNames or str): a chain. (all chains)
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        Dict[str, List[ProfitLeaderboard]]: the profit leaderboard.
+        ::
+
+            {
+                'eth': ProfitLeaderboard(...),
+                'bsc': ProfitLeaderboard(...)
+            }
+
     """
     profit_dict = {}
     if chain:
@@ -146,14 +160,21 @@ def history_list(
     """
     Get a NFT transaction history of an address.
 
-    :param str address: the address
-    :param ChainNames or str chain: a chain (all chains)
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return Dict[str, NFTHistory] or Dict[str, dict]: the NFT transaction history
-    {
-        'eth': NFTHistory(...),
-        'bsc': NFTHistory(...)
-    }
+    Args:
+        address (str): an address.
+        chain (ChainNames or str): a chain. (all chains)
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        Dict[str, NFTHistory] or Dict[str, dict]: the NFT transaction history.
+        ::
+
+            {
+                'eth': NFTHistory(...),
+                'bsc': NFTHistory(...)
+            }
+
     """
     history_dict = {}
     if chain:
@@ -199,9 +220,14 @@ def used_chains(address: str, proxies: Optional[str or List[str]] = None) -> Lis
     """
     Get chains in which there was interaction with NFT.
 
-    :param str address: the address
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return List[str]: chains
+    Args:
+        address (str): an address.
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        List[str]: chains.
+
     """
     params = {
         'user_addr': address

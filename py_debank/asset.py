@@ -10,9 +10,14 @@ def net_curve_24h(address: str, proxies: Optional[str or List[str]] = None) -> C
     """
     Get an address's asset value history for the last 24 hours.
 
-    :param str address: the address
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return Curve: the address's asset value history for the last 24 hours
+    Args:
+        address (str): an address.
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        Curve: the address's asset value history for the last 24 hours.
+
     """
     params = {
         'user_addr': address

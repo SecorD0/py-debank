@@ -12,11 +12,16 @@ def balance_list(
     """
     Get token balances of an address of a certain chain.
 
-    :param str address: the address
-    :param ChainNames or str chain: the chain
-    :param bool raw_data: if True, it will return the unprocessed dictionary (False)
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return Chain: token balances
+    Args:
+        address (str): an address.
+        chain (ChainNames or str): a chain. (all chains)
+        raw_data (bool): if True, it will return the unprocessed dictionary. (False)
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        Chain: token balances.
+
     """
     params = {
         'user_addr': address,
@@ -39,14 +44,21 @@ def cache_balance_list(
     """
     Get cached token balances of an address of all chains (current at the time of the last balance_list queries).
 
-    :param str address: the address
-    :param bool raw_data: if True, it will return the unprocessed dictionary (False)
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return Dict[str, Chain] or Dict[str, dict]: token balances
-    {
-        'eth': Chain(..., tokens=...),
-        'bsc': Chain(..., tokens=...)
-    }
+    Args:
+        address (str): an address.
+        raw_data (bool): if True, it will return the unprocessed dictionary. (False)
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        Dict[str, Chain] or Dict[str, dict]: token balances.
+        ::
+
+            {
+                'eth': Chain(..., tokens=...),
+                'bsc': Chain(..., tokens=...)
+            }
+
     """
     params = {
         'user_addr': address

@@ -10,9 +10,14 @@ def addr(address: str, proxies: Optional[str or List[str]] = None) -> User:
     """
     Get a DeBank user.
 
-    :param str address: an address
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return User: the DeBank user
+    Args:
+        address (str): an address.
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        User: the DeBank user.
+
     """
     params = {
         'addr': address
@@ -29,9 +34,14 @@ def info(address: str, proxies: Optional[str or List[str]] = None) -> Info:
     """
     Get an information about a DeBank user.
 
-    :param str address: an address
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return Info: the information about the DeBank user
+    Args:
+        address (str): an address.
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        Info: the information about the DeBank user.
+
     """
     params = {
         'id': address
@@ -48,9 +58,14 @@ def total_balance(address: str, proxies: Optional[str or List[str]] = None) -> f
     """
     Get a total balance of an address.
 
-    :param str address: the address
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return float: the total balance
+    Args:
+        address (str): an address.
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        float: the total balance.
+
     """
     params = {
         'addr': address

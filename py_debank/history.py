@@ -13,12 +13,17 @@ def list_(
     """
     Get a transaction history of an address.
 
-    :param str address: the address
-    :param ChainNames or str chain: a chain (all chains)
-    :param int or str start_time: before what time to parse transactions (0)
-    :param int or str page_count: how many recent transactions to parse (20)
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return History: the transaction history
+    Args:
+        address (str): an address.
+        chain (ChainNames or str): a chain. (all chains)
+        start_time (int or str): before what time to parse transactions. (0)
+        page_count (int or str): how many recent transactions to parse. (20)
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        History: the transaction history.
+
     """
     data = {}
     if page_count <= 20:
@@ -70,11 +75,16 @@ def token_price(
     """
     Get a token price at a certain point in time.
 
-    :param str token_id: the token contract address or the coin name
-    :param ChainNames or str chain: a chain
-    :param Optional[int or str] time_at: at what point in time to get a token price (current time)
-    :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
-    :return float: the token price
+    Args:
+        token_id (str): a token contract address or a coin name.
+        chain (ChainNames or str): a chain.
+        time_at (Optional[int or str]): at what point in time to get a token price. (current time)
+        proxies (Optional[str or List[str]]): an HTTP proxy or a proxy list for random choice for making
+            a request. (None)
+
+    Returns:
+        float: the token price.
+
     """
     params = {
         'chain': chain,
