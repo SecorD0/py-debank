@@ -6,8 +6,9 @@ from py_debank.models import Entrypoints, Chain
 from py_debank.utils import get_proxy_dict, check_response, get_headers
 
 
-def project_list(address: str, raw_data: bool = False,
-                 proxies: Optional[str or List[str]] = None) -> Dict[str, Chain] or Dict[str, dict]:
+def project_list(
+        address: str, raw_data: bool = False, proxies: Optional[str or List[str]] = None
+) -> Dict[str, Chain] or Dict[str, dict]:
     """
     Get projects where the account's assets are located (liquidity, staking, etc.)
 
@@ -20,12 +21,16 @@ def project_list(address: str, raw_data: bool = False,
         'bsc': Chain(..., projects=...)
     }
     """
-    params = {'user_addr': address}
-    response = requests.get(Entrypoints.PUBLIC.PORTFOLIO + 'project_list', params=params, headers=get_headers(),
-                            proxies=get_proxy_dict(proxies=proxies))
-    json_dict = check_response(response=response)
+    params = {
+        'user_addr': address
+    }
+    response = requests.get(
+        url=Entrypoints.PUBLIC.PORTFOLIO + 'project_list', params=params, headers=get_headers(),
+        proxies=get_proxy_dict(proxies=proxies)
+    )
+    json_response = check_response(response=response)
     chain_dict = {}
-    for token in json_dict['data']:
+    for token in json_response['data']:
         chain = token['chain']
         if chain in chain_dict:
             chain_dict[chain].append(token)
@@ -39,7 +44,8 @@ def project_list(address: str, raw_data: bool = False,
         for chain in sorted(chain_list, key=lambda chain: chain.usd_value, reverse=True):
             chain_dict[chain.name] = chain
 
-        chain_dict = {key: value for key, value in
-                      sorted(chain_dict.items(), key=lambda item: item[1].usd_value, reverse=True)}
+        chain_dict = {
+            key: value for key, value in sorted(chain_dict.items(), key=lambda item: item[1].usd_value, reverse=True)
+        }
 
     return chain_dict

@@ -14,11 +14,15 @@ def addr(address: str, proxies: Optional[str or List[str]] = None) -> User:
     :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
     :return User: the DeBank user
     """
-    params = {'addr': address}
-    response = requests.get(Entrypoints.PUBLIC.USER + 'addr', params=params, headers=get_headers(),
-                            proxies=get_proxy_dict(proxies=proxies))
-    json_dict = check_response(response=response)
-    return User(data=json_dict['data'])
+    params = {
+        'addr': address
+    }
+    response = requests.get(
+        url=Entrypoints.PUBLIC.USER + 'addr', params=params, headers=get_headers(),
+        proxies=get_proxy_dict(proxies=proxies)
+    )
+    json_response = check_response(response=response)
+    return User(data=json_response['data'])
 
 
 def info(address: str, proxies: Optional[str or List[str]] = None) -> Info:
@@ -29,11 +33,15 @@ def info(address: str, proxies: Optional[str or List[str]] = None) -> Info:
     :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
     :return Info: the information about the DeBank user
     """
-    params = {'id': address}
-    response = requests.get(Entrypoints.PUBLIC.ENTRYPOINT + 'hi/user/info', params=params, headers=get_headers(),
-                            proxies=get_proxy_dict(proxies=proxies))
-    json_dict = check_response(response=response)
-    return Info(data=json_dict['data'])
+    params = {
+        'id': address
+    }
+    response = requests.get(
+        url=Entrypoints.PUBLIC.ENTRYPOINT + 'hi/user/info', params=params, headers=get_headers(),
+        proxies=get_proxy_dict(proxies=proxies)
+    )
+    json_response = check_response(response=response)
+    return Info(data=json_response['data'])
 
 
 def total_balance(address: str, proxies: Optional[str or List[str]] = None) -> float:
@@ -44,8 +52,12 @@ def total_balance(address: str, proxies: Optional[str or List[str]] = None) -> f
     :param Optional[str or List[str]] proxies: an HTTP proxy or a proxy list for random choice for making a request (None)
     :return float: the total balance
     """
-    params = {'addr': address}
-    response = requests.get(Entrypoints.PUBLIC.USER + 'total_balance', params=params, headers=get_headers(),
-                            proxies=get_proxy_dict(proxies=proxies))
-    json_dict = check_response(response=response)
-    return json_dict['data']['total_usd_value']
+    params = {
+        'addr': address
+    }
+    response = requests.get(
+        url=Entrypoints.PUBLIC.USER + 'total_balance', params=params, headers=get_headers(),
+        proxies=get_proxy_dict(proxies=proxies)
+    )
+    json_response = check_response(response=response)
+    return json_response['data']['total_usd_value']
